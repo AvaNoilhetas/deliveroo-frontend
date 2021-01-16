@@ -6,7 +6,7 @@ import Restaurant from "./components/Restaurant";
 import Category from "./components/Category";
 import Meal from "./components/Meal";
 import Loader from "./components/Loader";
-//import Cart from "./components/Cart";
+import Cart from "./components/Cart";
 
 function App() {
   const [data, setData] = useState({});
@@ -35,8 +35,8 @@ function App() {
               picture={data.restaurant.picture}
             />
             <div className="bg-gray-lightest">
-              <div className="container grid md:grid-cols-3 gap-5">
-                <div className="col-span-2">
+              <div className="container grid md:grid-cols-6 gap-5">
+                <div className="lg:col-span-4 md:col-span-3 col-span-6">
                   {data.categories.map((category, index) => {
                     if (category.meals.length > 0) {
                       return (
@@ -63,7 +63,9 @@ function App() {
                     }
                   })}
                 </div>
-                <div className="col-span-1">{/* <Cart /> */}</div>
+                <div className="lg:col-span-2 md:col-span-3 col-span-6 relative">
+                  <Cart />
+                </div>
               </div>
             </div>
           </section>
