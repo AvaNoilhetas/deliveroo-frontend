@@ -3,6 +3,16 @@ import minus from "./../assets/img/btn-minus.svg";
 import plus from "./../assets/img/btn-plus.svg";
 
 const Cart = props => {
+  let subtotal = 0;
+  let total = 0;
+  let deliveryFees = 2.5;
+
+  for (let i = 0; i < props.cart.length; i++) {
+    subtotal += Number(props.cart[i].price);
+  }
+
+  total = Number(subtotal) + Number(deliveryFees);
+
   return (
     <div className="md:sticky top-5 bg-white rounded md:mt-8 p-4 mb-8">
       <button className="btn w-full mb-4">Valider mon panier</button>
@@ -26,16 +36,22 @@ const Cart = props => {
       <hr className="text-gray-border pb-3" />
       <div className="flex justify-between">
         <p className="text_dark">Sous-total</p>
-        <p className="text_dark">10&nbsp;€</p>
+        <p className="text_dark">
+          {subtotal.toFixed(2).replace(".", ",")}&nbsp;€
+        </p>
       </div>
       <div className="flex justify-between">
         <p className="text_dark">Frais de livraison</p>
-        <p className="text_dark">10&nbsp;€</p>
+        <p className="text_dark">
+          {deliveryFees.toFixed(2).replace(".", ",")}&nbsp;€
+        </p>
       </div>
       <hr className="text-gray-border pb-3" />
       <div className="flex justify-between">
         <p className="font-medium text-lg text-gray-dark">Total</p>
-        <p className="font-medium text-lg text-gray-dark">10&nbsp;€</p>
+        <p className="font-medium text-lg text-gray-dark">
+          {total.toFixed(2).replace(".", ",")}&nbsp;€
+        </p>
       </div>
     </div>
   );
