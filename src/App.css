@@ -25,3 +25,7 @@
 .btn {
   @apply bg-green hover:bg-green text-base text-white font-bold p-4 rounded;
 }
+
+.btn[disabled] {
+  @apply bg-gray-disabled cursor-not-allowed hover:bg-gray-disabled text-base text-white font-bold p-4 rounded;
+}

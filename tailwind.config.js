@@ -25,7 +25,8 @@ module.exports = {
         default: "#808484",
         light: "#868a8a",
         lightest: "#f3f5f5",
-        border: "#d1d7d7"
+        border: "#d1d7d7",
+        disabled: "#bac3c3"
       },
       white: "#ffffff",
       orange: "#ff8000"
