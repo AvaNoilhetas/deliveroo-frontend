@@ -4,7 +4,7 @@ import star from "./../assets/img/star.svg";
 const Meal = props => {
   return (
     <div
-      onClick={() => props.handleSelectMeal(props.title, props.price)}
+      onClick={() => props.handleSelectMeal(props.id, props.title, props.price)}
       className="cursor-pointer bg-white rounded items-stretch grid grid-cols-5 md:gap-10 gap-3 min-h-10 p-4"
     >
       <div className={props.picture ? "col-span-3" : "col-span-5"}>

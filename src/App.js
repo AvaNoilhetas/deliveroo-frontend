@@ -23,10 +23,16 @@ function App() {
     fetchData();
   }, []);
 
-  const handleSelectMeal = (title, price) => {
+  const handleSelectMeal = (id, title, price) => {
     const newCart = [...cart];
-    newCart.push({ title: title, price: price, quantity: 1 });
-    setCart(newCart);
+    let item = newCart.find(x => x.id === id);
+    if (item) {
+      item.quantity += 1;
+      setCart(newCart);
+    } else {
+      newCart.push({ id: id, title: title, price: price, quantity: 1 });
+      setCart(newCart);
+    }
   };
 
   return (
@@ -54,6 +60,7 @@ function App() {
                               return (
                                 <Meal
                                   key={meal.id}
+                                  id={meal.id}
                                   title={meal.title}
                                   description={meal.description}
                                   price={meal.price}
