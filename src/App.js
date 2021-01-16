@@ -25,7 +25,7 @@ function App() {
 
   const handleSelectMeal = (title, price) => {
     const newCart = [...cart];
-    newCart.push({ title: title, price: price });
+    newCart.push({ title: title, price: price, quantity: 1 });
     setCart(newCart);
   };
 
@@ -72,7 +72,7 @@ function App() {
                   })}
                 </div>
                 <div className="lg:col-span-2 md:col-span-3 col-span-6 relative">
-                  <Cart cart={cart} />
+                  <Cart cart={cart} setCart={setCart} />
                 </div>
               </div>
             </div>

@@ -1,14 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import minus from "./../assets/img/btn-minus.svg";
 import plus from "./../assets/img/btn-plus.svg";
 
 const Cart = props => {
+  const handleRemoveQuantity = index => {
+    let newCart = [...props.cart];
+    newCart[index].quantity -= 1;
+    if (newCart[index].quantity === 0) {
+      newCart.splice(index, 1);
+      props.setCart(newCart);
+    } else {
+      props.setCart(newCart);
+    }
+  };
+
+  const handleAddQuantity = index => {
+    let newCart = [...props.cart];
+    newCart[index].quantity += 1;
+    props.setCart(newCart);
+  };
+
   let subtotal = 0;
   let total = 0;
   let deliveryFees = 2.5;
 
   for (let i = 0; i < props.cart.length; i++) {
-    subtotal += Number(props.cart[i].price);
+    subtotal += Number(props.cart[i].price) * props.cart[i].quantity;
   }
 
   total = Number(subtotal) + Number(deliveryFees);
@@ -20,15 +37,27 @@ const Cart = props => {
         return (
           <div key={index} className="grid grid-cols-9 items-start">
             <div className="col-span-2 flex items-center mr-5">
-              <img src={minus} alt="minus" width="18" />
-              <span className="text_dark pb-0 px-2">1</span>
-              <img src={plus} alt="plus" width="18" />
+              <img
+                onClick={() => handleRemoveQuantity(index)}
+                src={minus}
+                alt="minus"
+                className="cursor-pointer"
+                width="18"
+              />
+              <span className="text_dark pb-0 px-2">{item.quantity}</span>
+              <img
+                onClick={() => handleAddQuantity(index)}
+                src={plus}
+                alt="plus"
+                className="cursor-pointer"
+                width="18"
+              />
             </div>
             <p className="col-span-5 text_dark text-left leading-tight">
               {item.title}
             </p>
             <p className="col-span-2 text-right text_dark">
-              {item.price}&nbsp;€
+              {(item.price * item.quantity).toFixed(2).replace(".", ",")}&nbsp;€
             </p>
           </div>
         );
