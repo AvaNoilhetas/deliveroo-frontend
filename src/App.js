@@ -10,6 +10,7 @@ import Cart from "./components/Cart";
 
 function App() {
   const [data, setData] = useState({});
+  const [cart, setCart] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
@@ -21,6 +22,12 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleSelectMeal = (title, price) => {
+    const newCart = [...cart];
+    newCart.push({ title: title, price: price });
+    setCart(newCart);
+  };
 
   return (
     <div>
@@ -40,23 +47,24 @@ function App() {
                   {data.categories.map((category, index) => {
                     if (category.meals.length > 0) {
                       return (
-                        <>
-                          <Category key={index} title={category.name} />
+                        <div key={index}>
+                          <Category title={category.name} />
                           <div className="grid xl:grid-cols-2 gap-5 pb-8">
-                            {data.categories[index].meals.map((meal, i) => {
+                            {data.categories[index].meals.map(meal => {
                               return (
                                 <Meal
-                                  key={i}
+                                  key={meal.id}
                                   title={meal.title}
                                   description={meal.description}
                                   price={meal.price}
                                   picture={meal.picture}
                                   popular={meal.popular}
+                                  handleSelectMeal={handleSelectMeal}
                                 />
                               );
                             })}
                           </div>
-                        </>
+                        </div>
                       );
                     } else {
                       return "";
@@ -64,7 +72,7 @@ function App() {
                   })}
                 </div>
                 <div className="lg:col-span-2 md:col-span-3 col-span-6 relative">
-                  <Cart />
+                  <Cart cart={cart} />
                 </div>
               </div>
             </div>

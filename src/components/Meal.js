@@ -3,7 +3,10 @@ import star from "./../assets/img/star.svg";
 
 const Meal = props => {
   return (
-    <div className="bg-white rounded items-stretch grid grid-cols-5 md:gap-10 gap-3 min-h-10 p-4">
+    <div
+      onClick={() => props.handleSelectMeal(props.title, props.price)}
+      className="cursor-pointer bg-white rounded items-stretch grid grid-cols-5 md:gap-10 gap-3 min-h-10 p-4"
+    >
       <div className={props.picture ? "col-span-3" : "col-span-5"}>
         <h3 className="title-3">{props.title}</h3>
         {props.description && (
@@ -15,7 +18,10 @@ const Meal = props => {
         )}
         <div className="md:flex">
           <p className="font-light text-lg text-gray-default md:pr-5">
-            {props.price} €
+            {Number(props.price)
+              .toFixed(2)
+              .replace(".", ",")}
+            &nbsp;€
           </p>
           {props.popular && (
             <div className="flex items-center">
