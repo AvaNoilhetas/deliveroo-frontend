@@ -64,7 +64,7 @@ function App() {
                                   title={meal.title}
                                   description={meal.description}
                                   price={meal.price}
-                                  picture={meal.picture}
+                                  picture={meal.web - scraper - start - url}
                                   popular={meal.popular}
                                   handleSelectMeal={handleSelectMeal}
                                 />
