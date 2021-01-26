@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import Header from "./components/Header";
-import Restaurant from "./components/Restaurant";
-import Category from "./components/Category";
-import Meal from "./components/Meal";
-import Loader from "./components/Loader";
 import Cart from "./components/Cart";
+import Category from "./components/Category";
+import Header from "./components/Header";
+import Loader from "./components/Loader";
+import Meal from "./components/Meal";
+import Restaurant from "./components/Restaurant";
 
 function App() {
   const [data, setData] = useState({});
@@ -14,7 +14,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
-    const response = await axios.get("https://delili-backend.herokuapp.com/");
+    const response = await axios.get(
+      "https://deliveroooooooo-backend.herokuapp.com/"
+    );
     setData(response.data);
     setIsLoading(false);
   };
