@@ -34,7 +34,7 @@ const Cart = props => {
     <div className="md:sticky top-5 bg-white rounded md:mt-8 p-4 mb-8">
       <button
         className="btn w-full mb-4"
-        disabled={props.cart.length === 0 ? "true" : null}
+        disabled={props.cart.length === 0 ? true : null}
       >
         Valider mon panier
       </button>
@@ -95,7 +95,9 @@ const Cart = props => {
         </>
       )}
       {props.cart.length === 0 && (
-        <p class="text-center text-gray-default my-8">Votre panier est vide</p>
+        <p className="text-center text-gray-default my-8">
+          Votre panier est vide
+        </p>
       )}
     </div>
   );
