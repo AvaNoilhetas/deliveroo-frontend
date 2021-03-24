@@ -43,17 +43,28 @@ const Cart = props => {
           <div className="max-h-60 overflow-y-scroll">
             {props.cart.map((item, index) => {
               return (
-                <div key={index} className="grid grid-cols-9 items-start">
+                <div
+                  key={index}
+                  className="grid grid-cols-9 items-start"
+                  data-testid="card-line"
+                >
                   <div className="col-span-2 flex items-center mr-5">
                     <img
+                      data-testid="minus-button"
                       onClick={() => handleRemoveQuantity(index)}
                       src={minus}
                       alt="minus"
                       className="cursor-pointer"
                       width="18"
                     />
-                    <span className="text_dark pb-0 px-2">{item.quantity}</span>
+                    <span
+                      className="text_dark pb-0 px-2"
+                      data-testid="quantity"
+                    >
+                      {item.quantity}
+                    </span>
                     <img
+                      data-testid="plus-button"
                       onClick={() => handleAddQuantity(index)}
                       src={plus}
                       alt="plus"
@@ -88,8 +99,11 @@ const Cart = props => {
           <hr className="text-gray-border pb-3" />
           <div className="flex justify-between">
             <p className="font-medium text-lg text-gray-dark">Total</p>
-            <p className="font-medium text-lg text-gray-dark">
-              {total.toFixed(2).replace(".", ",")}&nbsp;€
+            <p
+              className="font-medium text-lg text-gray-dark"
+              data-testid="cart-amount"
+            >
+              {total.toFixed(2).replace(".", ",")} €
             </p>
           </div>
         </>
