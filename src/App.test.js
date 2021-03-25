@@ -44,4 +44,14 @@ test("Add meal to cart", async () => {
     cardAmount.textContent.replace(" €", "").replace(",", ".")
   );
   expect(total2).toEqual(77.5);
+
+  // Delete one meal
+  userEvent.click(minusButton[0]);
+
+  // Check quantity after click
+  expect(quantity[0].textContent).toEqual("1");
+  const total3 = Number(
+    cardAmount.textContent.replace(" €", "").replace(",", ".")
+  );
+  expect(total3).toEqual(52.5);
 });
