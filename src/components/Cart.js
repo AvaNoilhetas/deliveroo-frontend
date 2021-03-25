@@ -24,8 +24,8 @@ const Cart = props => {
   let total = 0;
   let deliveryFees = 2.5;
 
-  for (let i = 0; i < props.cart.length; i++) {
-    subtotal += Number(props.cart[i].price) * props.cart[i].quantity;
+  for (let value of props.cart) {
+    subtotal += Number(value.price) * value.quantity;
   }
 
   total = Number(subtotal) + Number(deliveryFees);
