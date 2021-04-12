@@ -1,10 +1,10 @@
-# DELIVEROO FRONT END 🍔🍟🍕🧁🍩
+<h1 align="center">DELIVEROO FRONT END 🍔🍟🍕🧁🍩</h1>
 
-_Copy of takeaway website Deliveroo._
+<p align="center" style="font-style: italic">Copy of takeaway website Deliveroo.</p>
 
 ![Screenshot](screenshot.png)
 <br/>
-[See the project](https://deliveroooooooo.netlify.app/)
+<p align="center"><a href="https://deliveroooooooo.netlify.app/">See the project</a></p>
 
 ## Installation
 
